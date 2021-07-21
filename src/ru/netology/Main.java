@@ -26,30 +26,7 @@ public class Main {
         mainGroup.interrupt();
         System.out.println("Завершаю работу потоков...");
 
-        //2 task
-        Callable<String> myCallable = new MyCallable();
-        Callable<String> myCallable1 = new MyCallable();
-        Callable<String> myCallable2 = new MyCallable();
-        Callable<String> myCallable3 = new MyCallable();
-        ExecutorService exec = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-        for (int i = 0; i < 10; i++) {
 
-            try {
-                Thread.sleep(1000);
-                final Future<String> task = exec.submit(myCallable);
-                final Future<String> task1 = exec.submit(myCallable1);
-                final Future<String> task2 = exec.submit(myCallable2);
-                final Future<String> task3 = exec.submit(myCallable3);
-
-                System.out.println(task.get());
-                System.out.println(task1.get());
-                System.out.println(task2.get());
-                System.out.println(task3.get());
-            } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
-            }
-        }
-        exec.shutdown();
     }
 
 }
